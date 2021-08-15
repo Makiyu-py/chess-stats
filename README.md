@@ -16,3 +16,19 @@ npm i
 ```bash
 npm run dev
 ```
+
+## To do
+
+- [ ] Add lichess statistics
+
+- [ ] Add more stuff in this repo
+
+  - [ ] License
+  - [ ] Proper README
+  - [ ] Github Pages Deployment
+
+- [ ] Style-it up!
+
+  - [ ] Add CSS
+  - [ ] Make chess stats their own component
+  - [ ] Better loading screen
