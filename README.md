@@ -19,7 +19,7 @@ npm run dev
 
 ## To do
 
-- [ ] Add lichess statistics
+- [x] Add lichess statistics
 
 - [ ] Add more stuff in this repo
 

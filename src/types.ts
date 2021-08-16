@@ -66,3 +66,6 @@ export interface fetchparams {
   url: string;
   options?: RequestInit;
 }
+
+export type WebChess = "chess.com" | "lichess";
+export type ZeroOrOne = 0 | 1;

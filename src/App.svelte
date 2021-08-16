@@ -1,30 +1,25 @@
 <script lang="ts">
-  import { fetchBase } from "./fetcher";
+  import ChessCom from "./chess-com.svelte";
+  import Lichess from "./lichess.svelte";
+
+  import type { WebChess, ZeroOrOne } from "./types";
 
   export let lichessName: string;
   export let chessComName: string;
-  const chessComRes = fetchBase({
-    url: `https://api.chess.com/pub/player/${chessComName}/stats`,
-  });
+
+  let curPage: ZeroOrOne = 0;
+
+  let notPageName: WebChess;
+  $: notPageName = curPage === 0 ? "lichess" : "chess.com";
 </script>
 
 <main>
-  {#await $chessComRes}
-    <h1>Loading chess.com data...</h1>
-  {:then data}
-    <h1>{chessComName}'s chess.com Ratings</h1>
-    <ul>
-      {#each Object.entries(data) as chessModes}
-        {#if "last" in chessModes[1]}
-          <li>{chessModes[0]}: {chessModes[1].last.rating}</li>
-        {/if}
-      {/each}
-    </ul>
-  {/await}
+  <button on:click={() => (curPage = curPage === 0 ? 1 : 0)}
+    >Switch to {notPageName}</button
+  >
+  {#if curPage === 0}
+    <ChessCom name={chessComName} />
+  {:else}
+    <Lichess name={lichessName} />
+  {/if}
 </main>
-
-<style>
-  li {
-    text-transform: capitalize;
-  }
-</style>
