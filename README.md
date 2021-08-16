@@ -34,7 +34,6 @@ npm run build
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
-
 ## To do
 
 - [x] Add lichess statistics
@@ -43,7 +42,7 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 - [ ] Add more stuff in this repo
 
-  - [ ] License
+  - [x] License
   - [ ] Proper README
   - [ ] Github Pages Deployment
 
@@ -52,3 +51,9 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
   - [ ] Add CSS
   - [ ] Make chess stats their own component
   - [ ] Better loading screen
+
+## License
+
+This project is under the [MIT License](/LICENSE)
+
+The [favicon used for the site](https://github.com/twitter/twemoji/blob/master/assets/72x72/265f.png) is made by [Twitter](https://github.com/twitter) and is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
