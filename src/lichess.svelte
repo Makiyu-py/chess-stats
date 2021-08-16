@@ -1,30 +1,45 @@
 <script lang="ts">
-  import { fetchBase } from "./fetcher";
+	import { slide } from "svelte/transition";
+	import { fetchamtCache, fetchBase } from "./fetcher";
 
-  export let name: string;
-  console.log(name);
-  const lichessRes = fetchBase({
-    url: `https://lichess.org/api/user/${name}`,
-  });
+	export let name: string;
+	let urlforFetch = `https://lichess.org/api/user/${name}`;
+	const lichessRes = fetchBase({
+		url: urlforFetch,
+	});
 </script>
 
 <main>
-  {#await $lichessRes}
-    <h1>Loading lichess data...</h1>
-  {:then data}
-    <h1>{name}'s lichess Ratings</h1>
-    <ul>
-      {#each Object.entries(data.perfs) as chessModes}
-        {#if chessModes[1].games > 0}
-          <li>{chessModes[0]}: {chessModes[1].rating}</li>
-        {/if}
-      {/each}
-    </ul>
-  {/await}
+	{#await $lichessRes}
+		<h1>Loading lichess data...</h1>
+	{:then data}
+		<h1>{name}'s lichess Ratings</h1>
+		<ul>
+			{#await data.data then stats}
+				{#if data.isStale || fetchamtCache.get(urlforFetch) === 1}
+					{#each Object.entries(stats.perfs) as chessModes}
+						{#if chessModes[1].games > 0}
+							<li in:slide|preventDefault={{ duration: 500 }}>
+								{chessModes[0]}: {chessModes[1].rating}
+							</li>
+						{/if}
+					{/each}
+				{:else}
+					{#each Object.entries(stats.perfs) as chessModes}
+						{#if chessModes[1].games > 0}
+							<li>
+								{chessModes[0]}: {chessModes[1].rating}
+							</li>
+						{/if}
+					{/each}
+				{/if}
+			{/await}
+		</ul>
+	{/await}
 </main>
 
 <style>
-  li {
-    text-transform: capitalize;
-  }
+	li {
+		text-transform: capitalize;
+	}
 </style>
