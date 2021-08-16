@@ -21,6 +21,8 @@ npm run dev
 
 - [x] Add lichess statistics
 
+- [ ] Add a way to type-hint the data being parsed
+
 - [ ] Add more stuff in this repo
 
   - [ ] License
