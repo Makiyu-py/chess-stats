@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { slide } from "svelte/transition";
-	import { fetchamtCache, fetchBase } from "./fetcher";
+	import { slide } from 'svelte/transition';
+	import { fetchamtCache, fetchBase } from './fetcher';
+	import type { lichessProfileInterface } from './types';
 
 	export let name: string;
 	let urlforFetch = `https://lichess.org/api/user/${name}`;
-	const lichessRes = fetchBase({
+	const lichessRes = fetchBase<lichessProfileInterface>({
 		url: urlforFetch,
 	});
 </script>
@@ -18,7 +19,7 @@
 			{#await data.data then stats}
 				{#if data.isStale || fetchamtCache.get(urlforFetch) === 1}
 					{#each Object.entries(stats.perfs) as chessModes}
-						{#if chessModes[1].games > 0}
+						{#if "games" in chessModes[1] && chessModes[1].games > 0}
 							<li in:slide|preventDefault={{ duration: 500 }}>
 								{chessModes[0]}: {chessModes[1].rating}
 							</li>
@@ -26,7 +27,7 @@
 					{/each}
 				{:else}
 					{#each Object.entries(stats.perfs) as chessModes}
-						{#if chessModes[1].games > 0}
+						{#if "games" in chessModes[1] && chessModes[1].games > 0}
 							<li>
 								{chessModes[0]}: {chessModes[1].rating}
 							</li>

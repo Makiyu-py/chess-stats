@@ -38,7 +38,7 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 - [x] Add lichess statistics
 
-- [ ] Add a way to type-hint the data being parsed
+- [x] Add a way to type-hint the data being parsed
 
 - [ ] Add more stuff in this repo
 
