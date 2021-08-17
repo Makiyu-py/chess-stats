@@ -25,7 +25,10 @@
 		property="og:url"
 		content="https://makiyu-py.github.io/chess-stats/"
 	/>
-	<meta property="og:image" content="favicon.png" />
+	<meta
+		property="og:image"
+		content="https://twemoji.maxcdn.com/v/latest/72x72/265f.png"
+	/>
 	<meta title="theme-color" content="#32373d" />
 	<title>Chess Stats</title>
 </svelte:head>
