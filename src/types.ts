@@ -1,21 +1,6 @@
 // chess.com interface
 // https://www.chess.com/news/view/published-data-api
 
-interface recordObj {
-	win?: number;
-	loss?: number;
-	draw?: number;
-	time_per_move?: number;
-	timeout_percent?: number;
-}
-
-interface tourneyObj {
-	count?: number;
-	withdraw?: number;
-	points?: number;
-	highest_finish?: number;
-}
-
 interface baseGame {
 	date: number;
 	rating: number;
@@ -34,11 +19,6 @@ interface puzzleRushInner {
 	score: number;
 }
 
-interface puzzleRushObj {
-	daily?: puzzleRushInner;
-	best: puzzleRushInner;
-}
-
 interface tacticsOrlessons {
 	highest: baseGame;
 	lowest: baseGame;
@@ -47,8 +27,19 @@ interface tacticsOrlessons {
 interface gameModeObj {
 	last: lastGame;
 	best: bestGame;
-	record: recordObj;
-	tournament?: tourneyObj;
+	record: {
+		win?: number;
+		loss?: number;
+		draw?: number;
+		time_per_move?: number;
+		timeout_percent?: number;
+	};
+	tournament?: {
+		count?: number;
+		withdraw?: number;
+		points?: number;
+		highest_finish?: number;
+	};
 }
 
 export interface chessComStatsObj {
@@ -59,12 +50,10 @@ export interface chessComStatsObj {
 	chess_rapid?: gameModeObj;
 	tactics?: tacticsOrlessons;
 	lessons?: tacticsOrlessons;
-	puzzle_rush?: puzzleRushObj;
-}
-
-export interface fetchparams {
-	url: string;
-	options?: RequestInit;
+	puzzle_rush?: {
+		daily?: puzzleRushInner;
+		best: puzzleRushInner;
+	};
 }
 
 // lichess interface
@@ -77,22 +66,6 @@ interface basePerf {
 	prog?: number;
 	prov?: boolean;
 }
-
-interface profileKeyInterface {
-	country?: string;
-	location?: string;
-	bio?: string;
-	firstName?: string;
-	lastName?: string;
-	fideRating?: string;
-	uscfRating?: number;
-	ecfRating?: number;
-	rcfRating?: number;
-	cfcRating?: number;
-	dsbRating?: number;
-	links?: string;
-}
-
 
 export interface lichessProfileInterface {
 	id: string;
@@ -119,7 +92,20 @@ export interface lichessProfileInterface {
 	createdAt: number;
 	disabled: boolean;
 	tosViolation: boolean;
-	profile: profileKeyInterface;
+	profile: {
+		country?: string;
+		location?: string;
+		bio?: string;
+		firstName?: string;
+		lastName?: string;
+		fideRating?: string;
+		uscfRating?: number;
+		ecfRating?: number;
+		rcfRating?: number;
+		cfcRating?: number;
+		dsbRating?: number;
+		links?: string;
+	};
 	seenAt?: number;
 	patron: boolean;
 	playTime?: {
@@ -158,4 +144,9 @@ export type ZeroOrOne = 0 | 1;
 export interface fetchStoreRes<Type> {
 	data: Type;
 	isStale: boolean;
+}
+
+export interface fetchparams {
+	url: string;
+	options?: RequestInit;
 }
