@@ -3,6 +3,8 @@ name: Type-checking Svelte
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
 
 jobs:
   svelte-check:

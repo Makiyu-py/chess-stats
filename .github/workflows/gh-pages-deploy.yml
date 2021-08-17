@@ -1,6 +1,11 @@
 name: Github Pages Deployment
 
-on: [push]
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
 
 jobs:
   build-and-deploy:
