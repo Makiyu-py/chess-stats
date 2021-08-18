@@ -34,7 +34,7 @@
 		property="og:image"
 		content="https://twemoji.maxcdn.com/v/latest/72x72/265f.png"
 	/>
-	<meta title="theme-color" content="#32373d" />
+	<meta name="theme-color" content="#32373d" />
 	<title>Chess Stats</title>
 </svelte:head>
 
