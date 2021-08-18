@@ -11,6 +11,11 @@
 
 	let notPageName: WebChess;
 	$: notPageName = curPage === 0 ? 'lichess' : 'chess.com';
+
+	let statsComponents = [
+		{ props: { name: chessComName }, component: ChessCom },
+		{ props: { name: lichessName }, component: Lichess },
+	];
 </script>
 
 <svelte:head>
@@ -37,9 +42,8 @@
 	<button on:click={() => (curPage = curPage === 0 ? 1 : 0)}
 		>Switch to {notPageName}</button
 	>
-	{#if curPage === 0}
-		<ChessCom name={chessComName} />
-	{:else}
-		<Lichess name={lichessName} />
-	{/if}
+	<svelte:component
+		this={statsComponents[curPage].component}
+		{...statsComponents[curPage].props}
+	/>
 </main>
