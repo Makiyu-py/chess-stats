@@ -1,6 +1,6 @@
 # chess-stats
 
-Display your online chess stats on the web.
+My chess statistics – over the web!
 (still under development pls ignore ty)
 
 ## Get started
@@ -36,21 +36,21 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 ## To do
 
-- [x] Add lichess statistics
+-   [x] Add lichess statistics
 
-- [x] Add a way to type-hint the data being parsed
+-   [x] Add a way to type-hint the data being parsed
 
-- [ ] Add more stuff in this repo
+-   [ ] Add more stuff in this repo
 
-  - [x] License
-  - [ ] Proper README
-  - [x] Github Pages Deployment
+    -   [x] License
+    -   [ ] Proper README
+    -   [x] Github Pages Deployment
 
-- [ ] Style-it up!
+-   [ ] Style-it up!
 
-  - [ ] Add CSS
-  - [ ] Make chess stats their own component
-  - [ ] Better loading screen
+    -   [ ] Add CSS
+    -   [ ] Make chess stats their own component
+    -   [ ] Better loading screen
 
 ## License
 
