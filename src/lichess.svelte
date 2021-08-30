@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { camel2title } from './utils';
 	import { fetchamtCache, fetchBase } from './fetcher';
 	import type { lichessProfileInterface } from './types';
 
@@ -19,17 +20,19 @@
 			{#await data.data then stats}
 				{#if data.isStale || fetchamtCache.get(urlforFetch) === 1}
 					{#each Object.entries(stats.perfs) as chessModes}
-						{#if "games" in chessModes[1] && chessModes[1].games > 0}
+						{#if 'games' in chessModes[1] && chessModes[1].games > 0}
 							<li in:slide|preventDefault={{ duration: 500 }}>
-								{chessModes[0]}: {chessModes[1].rating}
+								{camel2title(chessModes[0])}: {chessModes[1]
+									.rating}
 							</li>
 						{/if}
 					{/each}
 				{:else}
 					{#each Object.entries(stats.perfs) as chessModes}
-						{#if "games" in chessModes[1] && chessModes[1].games > 0}
+						{#if 'games' in chessModes[1] && chessModes[1].games > 0}
 							<li>
-								{chessModes[0]}: {chessModes[1].rating}
+								{camel2title(chessModes[0])}: {chessModes[1]
+									.rating}
 							</li>
 						{/if}
 					{/each}
