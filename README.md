@@ -44,7 +44,7 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
   - [x] License
   - [ ] Proper README
-  - [ ] Github Pages Deployment
+  - [x] Github Pages Deployment
 
 - [ ] Style-it up!
 

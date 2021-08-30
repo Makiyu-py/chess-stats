@@ -11,7 +11,6 @@
 	const chessComRes = fetchBase<chessComStatsObj>({
 		url: urlforFetch,
 	});
-	console.log(chessComRes);
 </script>
 
 <main>
