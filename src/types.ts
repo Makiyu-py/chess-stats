@@ -140,7 +140,10 @@ export interface lichessProfileInterface {
 }
 
 export type WebChess = 'chess.com' | 'lichess';
-export type ZeroOrOne = 0 | 1;
+export enum WebChessEnum {
+	chesscom,
+	lichess,
+}
 export interface fetchStoreRes<Type> {
 	data: Type;
 	isStale: boolean;
